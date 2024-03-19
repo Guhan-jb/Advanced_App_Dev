@@ -7,7 +7,9 @@ import {
   Calendar2Check,
   Book,
   People,
+  BoxArrowUpRight,
 } from 'react-bootstrap-icons'; // Importing Bootstrap icons
+import Logo from '/vite.svg'; // Importing the logo SVG
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,51 +19,40 @@ const Navbar = () => {
   };
 
   const links = [
-    
     {
       name: 'Home',
-      path: '/',
+      path: '/user',
       icon: <HouseDoor size={20} />,
     },
     {
-      name: 'Services',
-      path: '#',
+      name: 'Events',
+      path: '/events',
       icon: <Calendar2Check size={20} />,
-      children: [
-        {
-          name: 'Events',
-          path: '/events',
-          icon: <Calendar2Check size={20} />,
-        },
-        {
-          name: 'Courses',
-          path: '/courses',
-          icon: <Book size={20} />,
-        },
-        {
-          name: 'Instructors',
-          path: '/instructors',
-          icon: <People size={20} />,
-        },
-      ],
     },
     {
-      name: 'Contact',
-      path: '/contact',
-      icon: <Envelope size={20} />,
+      name: 'Courses',
+      path: '/courses',
+      icon: <Book size={20} />,
     },
-    
     {
       name: 'Login',
       path: '/login',
       icon: <PersonCircle size={20} />,
     },
+    {
+      name: 'Sign Up',
+      path: '/register',
+      icon: <BoxArrowUpRight size={20} />,
+    },
   ];
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-white rounded-3xl shadow-xl mb-4">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-orange-600 font-extrabold text-4xl text-sm">Matrix</div>
+        <NavLink to="/" className="text-sm flex items-center space-x-2">
+          <img src={Logo} alt="Logo" className="w-8 h-8" />
+          <span className="text-transparent bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text font-extrabold text-4xl">MatriX</span>
+        </NavLink>
         <button
           onClick={toggleMenu}
           className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -92,45 +83,15 @@ const Navbar = () => {
         </button>
         <div className={`md:flex items-center space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
           {links.map((link, index) =>
-            link.children ? (
-              <div key={index} className="relative">
-                <button
-                  onClick={() => toggleMenu(index)}
-                  className="text-orange-500 flex items-center hover:bg-orange-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
-                >
-                  {link.icon}
-                  <span className="ml-2 text-sm">{link.name}</span>
-                </button>
-                {isOpen === index && (
-                  <div className="absolute mt-2 bg-white shadow-lg rounded-md py-2 w-32">
-                    {link.children.map((child, childIndex) => (
-                      <NavLink
-                        key={childIndex}
-                        to={child.path}
-                        activeClassName="font-bold"
-                        className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                        onClick={toggleMenu}
-                      >
-                        <div className="flex items-center">
-                          {child.icon}
-                          <span className="ml-2 text-sm">{child.name}</span>
-                        </div>
-                      </NavLink>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <NavLink
-                key={index}
-                to={link.path}
-                activeClassName="shadow-md font-bold"
-                className="text-orange-500 flex items-center hover:bg-orange-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
-              >
-                {link.icon}
-                <span className="ml-2 text-sm">{link.name}</span>
-              </NavLink>
-            )
+            <NavLink
+              key={index}
+              to={link.path}
+              activeClassName="shadow-md font-bold"
+              className="text-orange-500 flex items-center px-3 py-2 rounded-md transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105 hover:text-white hover:bg-gradient-to-r from-orange-400 to-orange-600"
+            >
+              {link.icon}
+              <span className="ml-2 text-sm">{link.name}</span>
+            </NavLink>
           )}
         </div>
       </div>
