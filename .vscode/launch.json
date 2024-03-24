@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MatrixApplication<matrix>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.matrix.matrix.MatrixApplication",
+            "projectName": "matrix",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
