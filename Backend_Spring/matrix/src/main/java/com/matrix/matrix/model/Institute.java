@@ -1,12 +1,10 @@
 package com.matrix.matrix.model;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,10 +21,13 @@ public class Institute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iid;
-    private String institute_name;
-    private String institute_location;
-    @OneToMany(mappedBy = "institute")
-    private List<Course> course;
+    @Column(nullable = true)
+    private String instituteName;
+    @Column(nullable = true)
+    private String instituteLocation; 
+    // @OneToMany
+    // @JoinColumn(name = "course_id", referencedColumnName = "iid",nullable = true)
+    // private List<Course> course;
 
 
 }

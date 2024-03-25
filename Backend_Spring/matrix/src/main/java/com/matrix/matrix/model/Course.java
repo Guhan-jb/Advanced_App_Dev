@@ -23,12 +23,12 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cid;
-    private String course_name;
-    private String course_description;
-    private String course_duration;
-    private String course_price;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_cid")
-    private Institute institute;
+    private String courseName;
+    private String courseDescription;
+    private String courseDuration;
+    private String coursePrice;
+    
+    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    // private Institute institute;
 
 }
