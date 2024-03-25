@@ -1,7 +1,5 @@
 package com.matrix.matrix.dto.request;
 
-import com.matrix.matrix.model.Institute;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

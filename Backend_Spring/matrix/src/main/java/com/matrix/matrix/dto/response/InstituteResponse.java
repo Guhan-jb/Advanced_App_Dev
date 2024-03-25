@@ -10,5 +10,5 @@ public class InstituteResponse {
     private Long iid;
     private String institute_name;
     private String institute_location;
-    //  private List<Course> course;
+    private String phone;
 }

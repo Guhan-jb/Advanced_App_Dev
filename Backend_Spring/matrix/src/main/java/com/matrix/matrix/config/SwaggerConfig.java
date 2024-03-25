@@ -23,8 +23,8 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
             return new OpenAPI()
                             .info(new Info()
-                                            .title("Guhan")
-                                            .description("This is a sample API documentation")
+                                            .title("Matrix")
+                                            .description("This is a sample API documentation for the Matrix chess academy website")
                                             .version("1.0.0")
                                             .contact(new Contact()
                                                             .name("Guhan")

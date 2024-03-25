@@ -12,5 +12,5 @@ public class InstituteRequest {
     // private Long iid
     private String instituteName;
     private String instituteLocation;
-    // private Long cid;
+    private String phone;
 }
