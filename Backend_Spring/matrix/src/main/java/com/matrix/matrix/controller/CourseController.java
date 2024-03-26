@@ -2,6 +2,7 @@ package com.matrix.matrix.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Tag(name = "Courses", description = "Endpoints for Courses")
 public class CourseController {
+
     private final CourseServiceImpl courseService;
+    @ApiRoleAccessNotes
+    @Secured("Admin")
     @PostMapping("/addcourse")
     @Operation(summary = "Register a new Course", description = "Allows Admin to create a course.")
     public String postMethodName(@RequestBody CourseRequest courseRequest) {

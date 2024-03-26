@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.matrix.matrix.dto.request.CourseRequest;
 import com.matrix.matrix.dto.request.InstituteRequest;
-import com.matrix.matrix.model.Course;
 import com.matrix.matrix.model.Institute;
 import com.matrix.matrix.repository.InstituteRepo;
 
@@ -21,10 +19,8 @@ public class InstituteServiceImpl {
     {
 
         var institute=Institute.builder()
-        // .iid(instituteRequest.getIid())
         .instituteName(instituteRequest.getInstituteName())
         .instituteLocation(instituteRequest.getInstituteLocation())
-        // .course(courseRepo.findByCid((long)1))
         .build();
 
         instituteRepo.save(institute);
@@ -35,20 +31,37 @@ public class InstituteServiceImpl {
         return instituteRepo.findAll();
     }
     public Institute getInstituteByID(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInstituteByID'");
+        return instituteRepo.findByIid(id);
     }
     public List<Institute> getInstituteByName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInstituteByName'");
+       List<Institute> instituteList=instituteRepo.findByInstituteName(name);
+       if (!instituteList.isEmpty()) {
+        return instituteList;
+       }
+       return null;
     }
-    public String editInstitute(InstituteRequest entity, Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editInstitute'");
+    public String editInstitute(InstituteRequest instituteRequest, Long id) {
+        Institute institute=instituteRepo.findByIid(id);
+        if(institute!=null)
+        {
+        var updatedInstitute=Institute.builder()
+        .iid(id)
+        .instituteName(instituteRequest.getInstituteName())
+        .instituteLocation(instituteRequest.getInstituteLocation())
+        .build();
+        instituteRepo.save(updatedInstitute);
+        return "Intutitute Updated";
+        }   
+        return "Institute Not Found!";
     }
     public String deleteInsitute(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteInsitute'");
+        Institute institute=instituteRepo.findByIid(id);
+        if(institute!=null)
+        {
+        instituteRepo.deleteById(id);
+        return "Intutitute deleted Successfully!";
+        }   
+        return "Institute Not Found!";
     }
 
 
