@@ -1,6 +1,7 @@
 package com.matrix.matrix.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,13 +45,14 @@ public class CourseController {
         return courseService.getAllCourses();
     }
     
-    @GetMapping("/course/{id}")
-    @Operation(summary = "Get a course by ID", description = "Allows all users to get all course.")
-    public Course getByCourseId(@PathVariable Long id) { 
+    @GetMapping("/course/id/{id}")
+    @Operation(summary = "Get a course by ID", description = "Allows all users to get a course by ID.")
+    public Optional<Course> getByCourseId(@PathVariable Long id) { 
         return courseService.getCourseByID(id);
     }
-    @GetMapping("/course/{name}")
-    @Operation(summary = "Get a course by ID", description = "Allows all users to get all course.")
+    
+    @GetMapping("/course/name/{name}")
+    @Operation(summary = "Get courses by name", description = "Allows all users to get courses by name.")
     public List<Course>  getByCourseName(@PathVariable String name) { 
         return courseService.getCourseByName(name);
     }

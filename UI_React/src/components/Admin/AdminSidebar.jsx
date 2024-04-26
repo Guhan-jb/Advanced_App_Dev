@@ -7,7 +7,7 @@ const AdminSidebar = () => {
   const navigate = useNavigate();
   const handleLogOut = (e) => {
     e.preventDefault();
-    localStorage.setItem('login','null')
+    localStorage.setItem('Token',null)
     navigate("/");
   };
 

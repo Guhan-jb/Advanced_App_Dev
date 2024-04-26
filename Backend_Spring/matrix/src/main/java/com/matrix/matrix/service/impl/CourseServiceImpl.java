@@ -1,6 +1,7 @@
 package com.matrix.matrix.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -36,9 +37,9 @@ public class CourseServiceImpl{
         return courseRepo.findAll();
     }
     //GETBYID
-    public Course getCourseByID(Long Id)
+    public Optional<Course> getCourseByID(Long Id)
     {
-        Course course=courseRepo.findByCid(Id);
+        Optional<Course> course=courseRepo.findById(Id);
         if(course!=null)
         {
             return course;

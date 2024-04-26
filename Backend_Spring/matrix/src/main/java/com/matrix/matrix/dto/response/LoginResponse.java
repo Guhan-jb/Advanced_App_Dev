@@ -1,5 +1,7 @@
 package com.matrix.matrix.dto.response;
 
+import com.matrix.matrix.enums.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,4 +12,6 @@ import lombok.Data;
 public class LoginResponse {
     @Builder.Default
     private String accessToken = "";
+    private Long uid;
+    private Role role;
 }

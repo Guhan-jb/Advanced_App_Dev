@@ -17,14 +17,17 @@ public class InstituteServiceImpl {
     private final InstituteRepo instituteRepo;
     public String addInstitute(InstituteRequest instituteRequest)
     {
-
+        if(instituteRequest!=null)
+        {
         var institute=Institute.builder()
         .instituteName(instituteRequest.getInstituteName())
         .instituteLocation(instituteRequest.getInstituteLocation())
+        .phone(instituteRequest.getPhone())
         .build();
-
         instituteRepo.save(institute);
         return "Instuite Added Successfully";
+        }
+        return "Institute not added";
     }
     public List<Institute> getAllInstitution()
     {

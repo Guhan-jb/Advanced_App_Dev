@@ -1,4 +1,6 @@
 package com.matrix.matrix.controller;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,14 +27,14 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
     private final UserServiceImpl userService;
 
-    @PostMapping("/users")
+    @PostMapping("/newuser")
      @Operation(summary = "Register a new User", description = "Allows user to create a course.")
     public ResponseEntity<User> createUser(@RequestBody UserRequest registerRequest) {
         User user = userService.createUser(registerRequest);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping("update/{userId}")
     @Operation(summary = "Update a user by ID", description = "Allows user to Update user details using ID.")
     public ResponseEntity<User> updateUser(@PathVariable Long userId,
     @RequestBody UserRequest userUpdateRequest) {
@@ -40,16 +42,16 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
     
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("delete/{userId}")
     @Operation(summary = "Delete a user by ID", description = "Allows user to Delete user details using ID.")
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("/users/{userId}")
+    @GetMapping("/findbyId/{userId}")
     @Operation(summary = "Get a user by ID", description = "Allows user to Get user details using ID.")
-    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-        User user = userService.getUserById(userId);
-        return ResponseEntity.ok(user);
+    public Optional<User> getUserById(@PathVariable Long userId) {
+        Optional<User> user = userService.getUserById(userId);
+        return user;
     }
 }

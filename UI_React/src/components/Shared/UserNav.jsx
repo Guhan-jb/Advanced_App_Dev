@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    localStorage.setItem('login','null')
+    localStorage.setItem('Token',null)
     navigate("/");
   };
 
@@ -60,7 +60,6 @@ const Navbar = () => {
             <NavLink
               key={index}
               to={link.path}
-              activeClassName="shadow-md font-bold"
               className="text-blue-500 flex items-center px-3 py-2 rounded-md transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105 hover:text-white hover:bg-gradient-to-r from-blue-400 to-blue-600"
             >
               {link.icon}

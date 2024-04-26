@@ -25,9 +25,9 @@ public class Institute {
     private String instituteName;
     @Column(nullable = true)
     private String instituteLocation; 
-    // @OneToMany
-    // @JoinColumn(name = "course_id", referencedColumnName = "iid",nullable = true)
-    // private List<Course> course;
+    private String phone;
+
+
 
 
 }

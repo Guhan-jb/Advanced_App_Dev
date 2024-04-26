@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(Role.User)
+                .role(Role.Admin)
                 .build();
         userRepository.save(user);
         return "User registered successfully.";
@@ -61,7 +61,11 @@ public class AuthServiceImpl implements AuthService {
         var accessToken = jwtUtil.generateToken(extraClaims, user);
         revokeAllUserTokens(user);
         saveUserToken(user, accessToken);
-        return LoginResponse.builder().accessToken(accessToken).build();
+        return LoginResponse.builder()
+        .accessToken(accessToken)
+        .uid(user.getUid())
+        .role(user.getRole())
+        .build();
     }
 
     private void saveUserToken(User user, String accessToken) {

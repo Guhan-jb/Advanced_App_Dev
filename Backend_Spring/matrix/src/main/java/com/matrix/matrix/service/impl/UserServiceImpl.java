@@ -2,6 +2,8 @@ package com.matrix.matrix.service.impl;
 
 
 
+import java.util.Optional;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +49,7 @@ public class UserServiceImpl{
     }
 
     
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId).orElseThrow();
+    public Optional<User> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 }

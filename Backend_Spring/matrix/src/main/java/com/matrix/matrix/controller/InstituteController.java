@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Tag(name = "Institute", description = "Endpoints for Institute")
 public class InstituteController {
-    private InstituteServiceImpl instituteServiceImpl;
+    private final InstituteServiceImpl instituteServiceImpl;
     @PostMapping("/addinstitute")
     public String postMethodName(@RequestBody InstituteRequest instituteRequest) {
         
@@ -36,12 +36,12 @@ public class InstituteController {
     public List<Institute> getMethodName() {
         return instituteServiceImpl.getAllInstitution();
     }
-    @GetMapping("/institute/{id}")
+    @GetMapping("/institute/id/{id}")
     @Operation(summary = "Get a institute by ID", description = "Allows all users to get all institute.")
     public Institute getByinstituteId(@PathVariable Long id) { 
         return instituteServiceImpl.getInstituteByID(id);
     }
-    @GetMapping("/institute/{name}")
+    @GetMapping("/institute/name/{name}")
     @Operation(summary = "Get a institute by ID", description = "Allows all users to get all institute.")
     public List<Institute>  getByinstituteName(@PathVariable String name) { 
         return instituteServiceImpl.getInstituteByName(name);
@@ -53,7 +53,7 @@ public class InstituteController {
     }
     @DeleteMapping("/deleteinstitute/{id}")
     @Operation(summary = "Delete institute", description = "Allows admin users to delete a institute.")
-    public String deleteinstitute(@PathVariable Long id, @RequestBody InstituteRequest entity) {
+    public String deleteinstitute(@PathVariable Long id) {
         return instituteServiceImpl.deleteInsitute(id);
     }
     

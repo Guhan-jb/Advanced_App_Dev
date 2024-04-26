@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class InstituteRequest {
-    // private Long iid
+    
     private String instituteName;
     private String instituteLocation;
     private String phone;
