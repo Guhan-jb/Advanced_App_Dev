@@ -45,13 +45,13 @@ public class CourseController {
         return courseService.getAllCourses();
     }
     
-    @GetMapping("/course/id/{id}")
+    @GetMapping("/id/{id}")
     @Operation(summary = "Get a course by ID", description = "Allows all users to get a course by ID.")
     public Optional<Course> getByCourseId(@PathVariable Long id) { 
         return courseService.getCourseByID(id);
     }
     
-    @GetMapping("/course/name/{name}")
+    @GetMapping("/name/{name}")
     @Operation(summary = "Get courses by name", description = "Allows all users to get courses by name.")
     public List<Course>  getByCourseName(@PathVariable String name) { 
         return courseService.getCourseByName(name);
@@ -63,7 +63,7 @@ public class CourseController {
     }
     @DeleteMapping("/deletecourse/{id}")
     @Operation(summary = "Delete course", description = "Allows admin users to delete a course.")
-    public String deleteCourse(@PathVariable Long id, @RequestBody CourseRequest entity) {
+    public String deleteCourse(@PathVariable Long id) {
         return courseService.deleteCourse(id);
     }
     

@@ -68,7 +68,7 @@ public class CourseServiceImpl{
         if(course!=null)
         {
             var updatedCourse=Course.builder()
-            .cid(courseRequest.getCid())
+            .cid(id)
             .courseName(courseRequest.getCourseName())
             .courseDescription(courseRequest.getCourseDescription())
             .courseDuration(courseRequest.getCourseDuration())

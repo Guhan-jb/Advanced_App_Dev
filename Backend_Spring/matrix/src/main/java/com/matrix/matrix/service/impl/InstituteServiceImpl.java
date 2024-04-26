@@ -51,6 +51,7 @@ public class InstituteServiceImpl {
         .iid(id)
         .instituteName(instituteRequest.getInstituteName())
         .instituteLocation(instituteRequest.getInstituteLocation())
+        .phone(instituteRequest.getPhone())
         .build();
         instituteRepo.save(updatedInstitute);
         return "Intutitute Updated";

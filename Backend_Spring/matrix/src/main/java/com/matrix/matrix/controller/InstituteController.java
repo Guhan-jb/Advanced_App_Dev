@@ -36,7 +36,7 @@ public class InstituteController {
     public List<Institute> getMethodName() {
         return instituteServiceImpl.getAllInstitution();
     }
-    @GetMapping("/institute/id/{id}")
+    @GetMapping("/id/{id}")
     @Operation(summary = "Get a institute by ID", description = "Allows all users to get all institute.")
     public Institute getByinstituteId(@PathVariable Long id) { 
         return instituteServiceImpl.getInstituteByID(id);
@@ -46,7 +46,7 @@ public class InstituteController {
     public List<Institute>  getByinstituteName(@PathVariable String name) { 
         return instituteServiceImpl.getInstituteByName(name);
     }
-    @PutMapping("editinstitute/{id}")
+    @PutMapping("/editinstitute/{id}")
     @Operation(summary = "Edit institute", description = "Allows admin users to update a institute.")
     public String updateinstitute(@PathVariable Long id, @RequestBody InstituteRequest entity) { 
         return instituteServiceImpl.editInstitute(entity, id);
